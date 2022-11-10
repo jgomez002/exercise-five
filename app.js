@@ -14,8 +14,8 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
  
 const indexRoute = require('./routes/index.js');
-const singlePostRoute = require("./routes/singlePost.js")
-const createPostRoute = require("./routes/createPost.js")
+const singlePostRoute = require("./routes/singlePost.js");
+const createPostRoute = require("./routes/createPost.js");
 
 
 app.use('/', indexRoute) ;

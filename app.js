@@ -1,5 +1,4 @@
 const firebase = require ("firebase/app");
-
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 4000;
@@ -10,13 +9,20 @@ const firebaseConfig = {
   storageBucket: "exercise-five-dynweb.appspot.com",
   messagingSenderId: "729832982897",
   appId: "1:729832982897:web:7d9f994425b4a0a8ab8ed0"
-};
+}; 
 
 firebase.initializeApp(firebaseConfig);
  
 const indexRoute = require('./routes/index.js');
+const singlePostRoute = require("./routes/singlePost.js")
+const createPostRoute = require("./routes/createPost.js")
 
-app.use('/', indexRoute);
+
+app.use('/', indexRoute) ;
+app.use('/post', singlePostRoute) ;
+app.use('/create', createPostRoute) ;
+
+
 
  
 app.listen(port, () => {

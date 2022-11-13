@@ -7,15 +7,18 @@ const db = firestore.getFirestore();
 
 
 const createPostForm =
-` <h1> Create Post</h1>
+`<h1> Create Post</h1>
 <form action="/create/submit">
-<div>
-<input type="text" name ="title" placeholder="Title"/>
-<input type="text" name ="text" placeholder="Text"/>
-<input type="text" name ="author" placeholder="Author"/>
-<button type="submit">Submit</button>
+    <div style=
+    "display: fles; 
+    flex-direction: column; 
+    max-width:100vw">
+        <input type="text" name ="postTitle" placeholder="Title" />
+        <input type="text" name ="postText" placeholder="Text"/>
+        <input type="text" name ="author" placeholder="Author"/>
+        <button type="submit">Submit</button>
 </div>
-</form> `
+</form>`
 ;
 
 router.use((req, res, next) => {
@@ -28,8 +31,8 @@ router.get("/", (req, res) => {
 
 router.get("/submit", (req, res) => {
     const queryParams = req.query;
-    const title = queryParams.title;    
-    const text = queryParams.text;
+    const title = queryParams.postTitle;    
+    const text = queryParams.postText;
     const author = queryParams.author;
 
     const idFromTitle = title.replace(/\s+/g,"-").toLowerCase();

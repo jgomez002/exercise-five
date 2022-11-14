@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router();
-//initializes firestore
 const firestore = require("firebase/firestore");
-//  Create a reference to the database
 const db = firestore.getFirestore();
 
  
@@ -10,7 +8,6 @@ router.use((req, res, next) => {
     console. log('Time: ', Date.now())
     next();
 });
-//defines the homepage route
 router.get('/', (req, res) => {
     const postsQuery =  firestore.getDocs(firestore.collection(db, "posts"));
     const postsArray = [];

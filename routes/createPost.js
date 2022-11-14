@@ -7,19 +7,23 @@ const db = firestore.getFirestore();
 
 
 const createPostForm =
-`<h1> Create Post</h1>
+`<div>
+<h1> Create Post</h1>
 <form action="/create/submit">
     <div style=
-    "display: fles; 
+    "display: flex; 
     flex-direction: column; 
-    max-width:100vw">
-        <input type="text" name ="postTitle" placeholder="Title" />
-        <input type="text" name ="postText" placeholder="Text"/>
-        <input type="text" name ="author" placeholder="Author"/>
+    max-width:50vw;">
+        <label for="postTitle">Title</label>
+        <input type="text" name ="postTitle" placeholder="Title" style = "margin-bottom: 25px" />
+        <label for="postText">Text</label>
+        <input type="text" name ="postText" placeholder="Text" style = "margin-bottom: 25px"/>
+        <label for="author">Author</label>
+        <input type="text" name ="author" placeholder="Author" style = "margin-bottom: 25px"/>
         <button type="submit">Submit</button>
 </div>
-</form>`
-;
+</div>
+</form>` ;
 
 router.use((req, res, next) => {
      next();
@@ -30,9 +34,9 @@ router.get("/", (req, res) => {
 });
 
 router.get("/submit", (req, res) => {
-    const queryParams = req.query;
+    const queryParams = req.query; 
     const title = queryParams.postTitle;    
-    const text = queryParams.postText;
+     const text = queryParams.postText;
     const author = queryParams.author;
 
     const idFromTitle = title.replace(/\s+/g,"-").toLowerCase();
@@ -55,9 +59,6 @@ router.get("/submit", (req, res) => {
             console.warn(error);
             res.send(`Error Submitting: ${error.toString()}`);
         })
-
-
-
 });
 
 module.exports = router;
